@@ -66,7 +66,6 @@ $PAGE->set_heading($course->fullname);
 $PAGE->force_settings_menu();
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading($journalname);
 
 // Check to see if groups are being used here.
 $groupmode = groups_get_activity_groupmode($cm);
@@ -84,14 +83,6 @@ if ($entriesmanager) {
             get_string('viewallentries', 'journal', $entrycount).'</a></div>';
     }
 }
-
-$journal->intro = trim($journal->intro);
-if (!empty($journal->intro)) {
-    $intro = format_module_intro('journal', $journal, $cm->id);
-    echo $OUTPUT->box($intro, 'generalbox', 'intro');
-}
-
-echo '<br />';
 
 $timenow = time();
 if ($course->format == 'weeks' && $journal->days) {
